@@ -29,6 +29,12 @@ public class UserResource {
         return usersRepository.findAll();
     }
 
+    @PutMapping(value = "/update")
+    public List<Users> update(){
+
+        return usersRepository.findAll();
+    }
+
 
 
 }
