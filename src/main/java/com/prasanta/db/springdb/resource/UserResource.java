@@ -4,7 +4,6 @@ package com.prasanta.db.springdb.resource;
 import com.prasanta.db.springdb.model.Users;
 import com.prasanta.db.springdb.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,24 +16,36 @@ public class UserResource {
     UsersRepository usersRepository;
 
     @GetMapping(value = "/all")
-    public List<Users> getAll(){
+    public List<Users> getAll() {
 
         return usersRepository.findAll();
 
     }
 
     @PostMapping(value = "/add")
-    public List<Users> persist(@RequestBody final Users users){
+    public List<Users> persist(@RequestBody final Users users) {
         usersRepository.save(users);
         return usersRepository.findAll();
     }
 
     @PutMapping(value = "/update")
-    public List<Users> update(){
+    public List<Users> update() {
 
         return usersRepository.findAll();
     }
 
+    @DeleteMapping(value = "/delete")
+    public void deleteUser(@RequestBody final Users users) {
+                  usersRepository.delete(users);
+
+
+    }
+
+//    @DeleteMapping(value = "/delete/{id}")
+//    public void deleteUser(@PathVariable  int id) {
+//        usersRepository.deleteById(id);
+//
+//    }
 
 
 }
